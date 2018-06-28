@@ -1,6 +1,69 @@
-<section class="header">
-
-</section>
-<main>
+<div style="background-image: url(assets/banner.png); background-size: cover; height: 71.85em;">
+  <section class="header">
+    <mat-card>
+      <a routerLink="/login"><img [src]='logoName' [alt]='Logo'></a>
+     </mat-card>
+  </section>
+<main class="container-fluid">
+  <div class="row">
+    <h1 style="text-align: center; font-size: 4em; color: white;">Full Stack Workshop</h1>
+    <div class="col-md-6" style="padding-top: 20em;">
+      <h1 style="color: white; font-size: 4em;">Digital Lync <br>Welcomes <br>You To </h1>
+    </div>
+    <div class="col-md-6" style="padding-top: 10em;">
+       <div class="row">
+        <div class="col-md-offset-2 col-md-6">
+            <mat-card>  
+                <form class="example-form" [formGroup]='userForm' (ngSubmit)='registerUser()'>
+                  <h1>Registration Form</h1>
+                    <div class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="First Name" formControlName="firstName" [(ngModel)]='user.firstName' name="firstName" >
+                          </mat-form-field>
+                    </div>
+                    <div  class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Last Name" formControlName="lastName" [(ngModel)]='user.lastName'>
+                          </mat-form-field>
+                    </div>
+                    <div  class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Email" formControlName="email" [(ngModel)]='user.email'>
+                          </mat-form-field>
+                    </div>
+                    <div  class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Mobile" formControlName="mobile" [(ngModel)]='user.mobile'>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-select placeholder="Working Status" [(ngModel)]='user.workingStatus'>
+                              <mat-option *ngFor="let working of workingStatus" [value]="working.value">
+                                {{working.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>                      
+                    </div>
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-select placeholder="Technologies  Intrested" [(ngModel)]='user.technologyIntrested'>
+                              <mat-option *ngFor="let technology of technologiesIntrested" [value]="technology.value">
+                                {{technology.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>                      
+                    </div>
+                    <div  style="text-align: center;">
+                      <button mat-raised-button color='accent' style="background-color: #1b80c3; font-size: 20px;">Register Me!</button>
+                    </div>
+                  </form>
+            </mat-card>
+        </div>
+       </div>
+    </div>
+  </div>
 
 </main>
+
+</div>

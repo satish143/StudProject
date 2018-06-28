@@ -5,12 +5,12 @@ import { RegisterComponent } from './register/register.component';
 import { SetpasswordComponent } from './setpassword/setpassword.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import {MatCardModule} from '@angular/material';
-
+import {MatCardModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
-  { path: 'signin', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'setpassword', component: SetpasswordComponent}
 
 ];
@@ -19,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forRoot(routes), MatCardModule
+    CommonModule, RouterModule.forRoot(routes), MatCardModule, MatInputModule, MatSelectModule, MatButtonModule, ReactiveFormsModule, FormsModule
   ],
   declarations: [LoginComponent, RegisterComponent, SetpasswordComponent],
   providers: [AuthService]
