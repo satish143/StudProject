@@ -15,30 +15,31 @@
         <div class="col-md-offset-2 col-md-6">
             <mat-card>  
                 <form class="example-form" [formGroup]='userForm' (ngSubmit)='registerUser()'>
-                  <h1>Registration Form</h1>
+                  <h1 style="text-align: center;">Registration Form</h1>
+                  <h4 *ngIf='response' style="color: red; font-weight: normal; text-align: center;">{{response.message}}</h4>
                     <div class="col-md-12">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="First Name" formControlName="firstName" [(ngModel)]='user.firstName' name="firstName" >
+                            <input matInput placeholder="First Name" formControlName="firstname"  >
                           </mat-form-field>
                     </div>
                     <div  class="col-md-12">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Last Name" formControlName="lastName" [(ngModel)]='user.lastName'>
+                            <input matInput placeholder="Last Name" formControlName="lastname" >
                           </mat-form-field>
                     </div>
                     <div  class="col-md-12">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Email" formControlName="email" [(ngModel)]='user.email'>
+                            <input matInput placeholder="Email" formControlName="email">
                           </mat-form-field>
                     </div>
                     <div  class="col-md-12">
                         <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Mobile" formControlName="mobile" [(ngModel)]='user.mobile'>
+                            <input matInput placeholder="Mobile" formControlName="mobile" >
                           </mat-form-field>
                     </div>
                     <div class="col-md-12">
                         <mat-form-field>
-                            <mat-select placeholder="Working Status" [(ngModel)]='user.workingStatus'>
+                            <mat-select placeholder="Working Status" formControlName='workingstatus'>
                               <mat-option *ngFor="let working of workingStatus" [value]="working.value">
                                 {{working.viewValue}}
                               </mat-option>
@@ -47,7 +48,7 @@
                     </div>
                     <div class="col-md-12">
                         <mat-form-field>
-                            <mat-select placeholder="Technologies  Intrested" [(ngModel)]='user.technologyIntrested'>
+                            <mat-select placeholder="Technologies  Intrested"  formControlName='interstedTech'>
                               <mat-option *ngFor="let technology of technologiesIntrested" [value]="technology.value">
                                 {{technology.viewValue}}
                               </mat-option>
