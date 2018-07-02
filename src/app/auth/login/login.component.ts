@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.userForm.value).subscribe( 
         (response) => {
           this.response = response;
-         if(this.response.status == 1){
+          console.log(this.response);
+         if(this.response.status == 'success'){
+          this.authService.storageSave(response);
           this.router.navigate(['/userslist']);
          }else{
            this.router.navigate(['/login']);

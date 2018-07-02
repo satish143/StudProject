@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/Http';
-//import { pipe } from 'rxjs/operators';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { AppService } from '../shared/service/app.service';
+import { Storage }from '../shared/utils/storage';
+import {  map } from 'rxjs/operators';
+
 @Injectable()
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
+  token: string;
+  constructor(private http: HttpClient, private router: Router, private activatedroute: ActivatedRoute, private appService: AppService) { }
 
 
 
@@ -16,12 +20,27 @@ export class AuthService {
 
   login(data: any): Observable<any>{
     let url = 'https://dlworkshop.herokuapp.com/login';
-    return this.http.post(url, data).pipe( (res) => { return res;})
+    return this.http.post(url, data);
   }
   setpassword(data: any): Observable<any>{
-    let url = 'https://dlworkshop.herokuapp.com/setpassword';
+    let url = 'https://dlworkshop.herokuapp.com/password';
     return this.http.post(url, data).pipe( (res) => { return res;})
   }
 
+
+  storageSave(data: any){
+    if(data) {
+        Storage.setSessionUser(data);
+        this.appService.sessionUserEmit(data);
+  }
+ }
+
+ logout(): void {
+  this.token = null;
+  localStorage.removeItem('currentUser');
+}
+getParam(key: string){
+  return this.activatedroute.snapshot.queryParams[key];
+}
 
 }

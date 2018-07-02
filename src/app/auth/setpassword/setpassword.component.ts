@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class SetpasswordComponent implements OnInit {
   userForm: FormGroup;
   response: any;
+  
   logoName: string = 'assets/logo.svg';
   constructor(private authService: AuthService, private router: Router) { 
     this.userForm = new FormGroup({
@@ -21,7 +22,13 @@ export class SetpasswordComponent implements OnInit {
   }
   setpasswordUser(){
     //console.log(this.userForm.value);
-    this.authService.setpassword(this.userForm.value).subscribe( 
+    let user = {
+      email: this.authService.getParam('id'),
+      password: this.userForm.value.password
+    }
+   
+    console.log(user);
+    this.authService.setpassword(user).subscribe( 
         (response) => {
           this.response = response;
          if(this.response.status == 1){
