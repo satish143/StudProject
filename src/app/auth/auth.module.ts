@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import {MatCardModule, MatInputModule, MatSelectModule, MatButtonModule} from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserXhr } from '@angular/http';
+import {CustExtBrowserXhrService} from '../cust-ext-browser-xhr.service';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
@@ -22,6 +24,6 @@ const routes: Routes = [
     CommonModule, RouterModule.forRoot(routes), MatCardModule, MatInputModule, MatSelectModule, MatButtonModule, ReactiveFormsModule, FormsModule
   ],
   declarations: [LoginComponent, RegisterComponent, SetpasswordComponent],
-  providers: [AuthService]
+  providers: [AuthService, {provide: BrowserXhr, useClass: CustExtBrowserXhrService}]
 })
 export class AuthModule { }

@@ -6,9 +6,9 @@ import { UsersService } from '../users.service';
   styleUrls: ['./userslist.component.css']
 })
 export class UserslistComponent implements OnInit {
-
+  users: any;
   constructor(private usersService: UsersService) { 
-    this.usersService.userslist().subscribe( (response) => { console.log(response);})
+    this.usersService.userslist().subscribe( (response) => { this.users = response;})
   }
 
   ngOnInit() {

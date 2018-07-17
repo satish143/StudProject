@@ -7,7 +7,7 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   userslist(): Observable<any>{
-    let url = 'https://dlworkshop.herokuapp.com/users';
+    let url = 'http://localhost:5000/users';
     return this.http.get(url);
   }
 

@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   logoName: string = 'assets/logo.svg';
   constructor(private authService: AuthService, private router: Router) { 
     this.userForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
+      email: new FormControl('admin@gmail.com', [Validators.required]),
+      password: new FormControl('admin123', [Validators.required])
     })
   }
 
@@ -22,16 +22,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    //console.log(this.userForm.value);
+   
     this.authService.login(this.userForm.value).subscribe( 
         (response) => {
           this.response = response;
-          console.log(this.response);
+          console.log(this.response._body);
          if(this.response.status == 'success'){
           this.authService.storageSave(response);
           this.router.navigate(['/userslist']);
          }else{
            this.router.navigate(['/login']);
+           this.response = 'a';
          }
       },
       (error) => {

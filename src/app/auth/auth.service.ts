@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/Http';
+import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { AppService } from '../shared/service/app.service';
 import { Storage }from '../shared/utils/storage';
@@ -13,24 +13,27 @@ export class AuthService {
 
 
 
-  register(data: any): Observable<any>{
-    let url = 'https://dlworkshop.herokuapp.com/register';
-    return this.http.post(url, data).pipe( (res) => { return res;})
+  register(data: any){
+    let url = 'http://localhost:5000/register';
+    return this.http.post(url, data);
   }
 
-  login(data: any): Observable<any>{
-    let url = 'https://dlworkshop.herokuapp.com/login';
-    return this.http.post(url, data);
+  login(data: any){
+    let url = 'http://localhost:5000/login';
+    // return this.http.get(url + '?email=' + data.email + '&password=' + data.password);
+     return this.http.post(url, data);
   }
   setpassword(data: any): Observable<any>{
     let url = 'https://dlworkshop.herokuapp.com/password';
-    return this.http.post(url, data).pipe( (res) => { return res;})
+    return this.http.post(url, data);
   }
 
 
   storageSave(data: any){
     if(data) {
         Storage.setSessionUser(data);
+        // let data2 = JSON.stringify(data);
+        // sessionStorage.setItem('user', data);
         this.appService.sessionUserEmit(data);
   }
  }

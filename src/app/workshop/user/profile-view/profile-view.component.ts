@@ -8,11 +8,12 @@ import { UserService } from '../user.service';
 })
 export class ProfileViewComponent implements OnInit {
   user: any;
+  userData: any;
   constructor(private userService: UserService) { 
     this.user = Storage.getSessionItem('user');
     let id = this.user.message._id;
     console.log(this.user)
-    this.userService.profileView(id).subscribe( (res) => console.log(res))
+    this.userService.profileView(id).subscribe( (res) => {this.userData = res});
   }
 
   ngOnInit() {

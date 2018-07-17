@@ -1,4 +1,4 @@
-<div style="background-image: url(assets/banner.png); background-size: cover; height: 71.85em;">
+<div style="background-image: url(assets/banner.png); background-size: cover; height: 58.85em;">
   <section class="header">
     <mat-card>
       <a routerLink="/login"><img [src]='logoName' [alt]='Logo'></a>
@@ -6,24 +6,24 @@
   </section>
 <main class="container-fluid">
   <div class="row">
-    <h1 style="text-align: center; font-size: 4em; color: white;">Full Stack Workshop</h1>
-    <div class="col-md-6" style="padding-top: 20em;">
-      <h1 style="color: white; font-size: 4em;">Digital Lync <br>Welcomes <br>You To </h1>
+    <h1 style="text-align: center; font-size: 3em; color: white;">Full Stack Workshop</h1>
+    <div class="col-md-6" style="padding-top: 16em;">
+      <h1 style="color: white; font-size: 3em;">Digital Lync <br>Welcomes <br>You To </h1>
     </div>
-    <div class="col-md-6" style="padding-top: 10em;">
+    <div class="col-md-6" style="padding-top: 5em;">
        <div class="row">
         <div class="col-md-offset-2 col-md-6">
             <mat-card>  
-                <form class="example-form" [formGroup]='userForm' (ngSubmit)='loginUser()'>
+                <form class="example-form" [formGroup]='userForm' (ngSubmit)='loginUser(userForm)'>
                   <h1 style="text-align: center;">Login</h1>
                   <h4 *ngIf='response' style="color: red; font-weight: normal; text-align: center;">{{response.message}}</h4>
                     
-                    <div  class="col-md-12">
+                    <div  class="col-md-12" style="padding: 0px;">
                         <mat-form-field class="example-full-width" style="width: 100%; padding: 20px;">
                             <input matInput placeholder="Email" formControlName="email">
                           </mat-form-field>
                     </div>
-                    <div  class="col-md-12">
+                    <div  class="col-md-12" style="padding: 0px;">
                       <mat-form-field class="example-full-width" style="width: 100%; padding: 0px 20px 20px 20px;">
                           <input matInput placeholder="Password" formControlName="password">
                         </mat-form-field>
